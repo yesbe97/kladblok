@@ -38,7 +38,7 @@ namespace kladblok
             // Open the selected file to read.
             //DialogResult fileStream = openFileDialog.FileName;
 
-            //textBox1.Text = System.IO.File.ReadAllLines(openFileDialog.FileName);
+            textBox1.Text = File.ReadAllText(openFileDialog.FileName);
 
             //using (System.IO.StreamReader reader = new System.IO.StreamReader(fileStream))
             //{
