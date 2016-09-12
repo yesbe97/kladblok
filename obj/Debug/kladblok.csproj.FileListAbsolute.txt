@@ -1,0 +1,9 @@
+f:\users\toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\bin\Debug\kladblok.exe.config
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\bin\Debug\kladblok.exe
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\bin\Debug\kladblok.pdb
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\obj\Debug\kladblok.csprojResolveAssemblyReference.cache
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\obj\Debug\kladblok.Form1.resources
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\obj\Debug\kladblok.Properties.Resources.resources
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\obj\Debug\kladblok.csproj.GenerateResource.Cache
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\obj\Debug\kladblok.exe
+f:\Users\Toshiba\documents\visual studio 2015\Projects\kladblok\kladblok\obj\Debug\kladblok.pdb
