@@ -8,21 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Text;
-using System.Diagnostics;
 
 namespace kladblok
 {
     public partial class Form1 : Form
     {
+        string FullPath = "";
+
+        private void SetTitle()
+        {
+            if (FullPath == null | FullPath == "")
+            {
+                this.Text = "Nieuw document - C# Kladblok";
+            }
+            else
+            {
+                string OnlyFilename = System.IO.Path.GetFileNameWithoutExtension(FullPath);
+                this.Text = OnlyFilename + " - C# Kladblok";
+            }
+        }
         public Form1()
         {
             InitializeComponent();
+            SetTitle();
         }
 
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //textBox1.Text = openFileDialog.FileName;
+            File.WriteAllText(this.FullPath, textBox1.Text);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,17 +49,25 @@ namespace kladblok
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
             var userClickedOK = openFileDialog.ShowDialog();
-            // Open the selected file to read.
-            //DialogResult fileStream = openFileDialog.FileName;
 
             textBox1.Text = File.ReadAllText(openFileDialog.FileName);
-
-            //using (System.IO.StreamReader reader = new System.IO.StreamReader(fileStream))
-            //{
-            //    // Read the first line from the file and write it the textbox.
-            //    textBox1.Text = reader.ReadAllText();
-            //}
-           // fileStream.Close();
+            this.FullPath = openFileDialog.FileName;
+            //char myChar = Path.GetFileNameWithoutExtension(openFileDialog.Fi‌​leName);
+            SetTitle();
+            //openFileDialog;
         }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            openFileDialog.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
+            DialogResult userButtonClicked = saveFileDialog.ShowDialog();
+            if (userButtonClicked == DialogResult.OK)
+            {
+                textBox1.Text = userButtonClicked.ToString();
+                //File.WriteAllText(saveFileDialog.FileName, textBox1.Text);
+            }
+        }
+        private void 
     }
 }
