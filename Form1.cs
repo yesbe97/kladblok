@@ -15,7 +15,7 @@ namespace kladblok
     {
         string FullPath = "";
 
-        private void SetTitle()
+        private void SetTitle(bool asterix)
         {
             if (FullPath == null | FullPath == "")
             {
@@ -26,17 +26,30 @@ namespace kladblok
                 string OnlyFilename = System.IO.Path.GetFileNameWithoutExtension(FullPath);
                 this.Text = OnlyFilename + " - C# Kladblok";
             }
+
+            string form_text = this.Text;
+
+            string check_string = "*";
+
+            bool b = form_text.Contains(check_string);
+
+            if (!asterix)
+            {
+                this.Text = form_text + "*";
+            }
         }
+
         public Form1()
         {
             InitializeComponent();
-            SetTitle();
+            SetTitle(true);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //textBox1.Text = openFileDialog.FileName;
             File.WriteAllText(this.FullPath, textBox1.Text);
+            SetTitle(true);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,9 +65,7 @@ namespace kladblok
 
             textBox1.Text = File.ReadAllText(openFileDialog.FileName);
             this.FullPath = openFileDialog.FileName;
-            //char myChar = Path.GetFileNameWithoutExtension(openFileDialog.Fi‌​leName);
-            SetTitle();
-            //openFileDialog;
+            SetTitle(true);
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,11 +74,41 @@ namespace kladblok
             openFileDialog.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
             DialogResult userButtonClicked = saveFileDialog.ShowDialog();
             if (userButtonClicked == DialogResult.OK)
+            { 
+                File.WriteAllText(saveFileDialog.FileName, textBox1.Text);
+            }
+            SetTitle(true);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void keydown_textbox1(object sender, KeyEventArgs e)
+        {
+            SetTitle(false);
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+
+            this.FullPath = "";
+
+            SetTitle(true);
+        }
+
+        private void wordWrapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(textBox1.WordWrap == true)
             {
-                textBox1.Text = userButtonClicked.ToString();
-                //File.WriteAllText(saveFileDialog.FileName, textBox1.Text);
+                textBox1.WordWrap = false;
+            }
+            else
+            {
+                textBox1.WordWrap = true;
             }
         }
-        private void 
     }
 }
